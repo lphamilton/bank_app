@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack -d --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "makeDb":  "mysql --host=localhost --user=root -p  < 'schema.sql'"
   },
   "repository": {
     "type": "git",
