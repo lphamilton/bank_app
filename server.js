@@ -1,11 +1,14 @@
 const express = require('express')
 const mysql = require ('mysql')
+const bodyParser = require('body-parser');
+const controllers = require('./database/controllers.js');
 
 // create connection
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : ''
+  password : '',
+  database : 'bank'
 })
 
 // connect
@@ -17,21 +20,21 @@ db.connect((err) => {
 })
 
 const app = express()
+app.use( bodyParser.json() ); //everything that comes in will be parsed
 
-// create db
+app.get('/users/:userId/transactions', (req, res) => {
+  const userId = req.params.userId
+  const cback = (response) => res.send(response)
 
-app.get('/createdb', (req, res)=> {
-  let sql = 'SHOW DATABASES'
-  db.query(sql, (err, result) => {
-    if(err) {
-      throw err
-    }
-    console.log(result)
-    res.send('showing db')
-  })
+  controllers.getUserTransactions(userId, cback)
 })
 
-// mysql --host=localhost --user=root  -e "schema.sql"
+app.get('/users/:username', (req, res) => {
+  const username = req.params.username
+  const cback = (response) => res.send(response)
+
+  controllers.getUserId(username, cback)
+})
 
 
 const port = 3000
@@ -40,3 +43,5 @@ app.use(express.static('public'))
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+module.exports.db = db;
