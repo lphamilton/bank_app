@@ -36,6 +36,17 @@ app.get('/users/:username', (req, res) => {
   controllers.getUserId(username, cback)
 })
 
+app.put('/users/:userId/recipient/:recipientId/amount/:amount/:balance', (req, res) => {
+  const username = req.params.userId
+  const receiver = req.params.recipientId
+  const amount = req.params.amount
+  const balance = req.params.balance
+
+  const cback = (response) => res.send(response)
+
+  controllers.transferUpdate(username, receiver, amount, balance, cback)
+})
+
 
 const port = 3000
 

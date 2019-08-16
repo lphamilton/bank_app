@@ -24,7 +24,8 @@ class App extends React.Component {
       })
     }
 
-    submitQuery(event){
+    submitQuery(){
+      console.log('this updated')
       // WHEN YOU SUBMIT YOU WILL CHANGE PAGES, AND SERVE UP ANOTHER COMPONENT
       // if the username was wrong, return an error according to what DB returned
       const {username} = this.state
@@ -34,7 +35,6 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         if(data.length > 0) { // the query was correct
-          console.log(data)
           appThis.setState({
             loggedIn: true,
             balance: data[0].balance,
@@ -57,7 +57,7 @@ class App extends React.Component {
           </div>
         )
       } else {
-        return <Bank balance={this.state.balance} id={this.state.id} username={this.state.username}></Bank>
+        return <Bank submitQuery={this.submitQuery} balance={this.state.balance} id={this.state.id} username={this.state.username}></Bank>
       }
     }
 };

@@ -29,8 +29,8 @@ The application will allow users to "login" and see their current balance, past 
 The frontend will be making calls to the database via a node server with routes:
 
 ### CRUD operations
-GET: /user/:userId/main  [Will access the users transactions as a table]
-PUT: /transfer/:sender/:amount/:receiver/:amount [A way for the client to transfer money to another account]
+* GET: /user/:userId/main  [Will access the users transactions as a table]
+* PUT: /transfer/:sender/:amount/:receiver/:amount [A way for the client to transfer money to another account]
 
 ## Built With
 

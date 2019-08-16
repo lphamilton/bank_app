@@ -15,5 +15,9 @@ tbody:nth-child(even) {
 }
 
 .transfer {
+  margin-bottom: 50px;
+}
+
+.submit {
   margin-bottom: 10px;
 }

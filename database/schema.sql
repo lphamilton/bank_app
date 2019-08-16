@@ -26,4 +26,4 @@ CREATE TABLE IF NOT EXISTS transactions (
 -- ALTER TABLE transactions ADD COLUMN balance FLOAT;
 
 
--- UPDATE transactions SET balance = 5000 WHERE id=1;
+-- UPDATE transactions SET balancedateTime = 3 WHERE id=1;
