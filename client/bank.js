@@ -58,6 +58,7 @@ class Bank extends React.Component {
       })
 
       this.props.submitQuery() // this will pull updated data from the database
+      // TODO: Restructure db query 
     }
 
     transferAmountChange(event){
